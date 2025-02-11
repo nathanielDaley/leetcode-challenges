@@ -3,36 +3,60 @@
  * @param {Function} fn
  * @return {number[]}
  */
-var map = function (arr, fn) {
-  arr.forEach((element, index) => {
-    arr[index] = fn(element, index);
-  });
+
+// Solutions
+// ---------------------
+
+// Solution 1
+// var filter = function (arr, fn) {
+//   let newArray = [];
+
+//   for (let i = 0; i < arr.length; i++) {
+//     if (fn(arr[i], i)) {
+//       newArray.push(arr[i]);
+//     }
+//   }
+
+//   return newArray;
+// };
+
+// Solution 2
+function filter(arr, fn) {
+  let currentIndex = 0;
+
+  for (let i = 0; i < arr.length; i++) {
+    if (fn(arr[i], i)) {
+      arr[currentIndex] = arr[i];
+      currentIndex++;
+    }
+  }
+
+  arr.length = currentIndex;
   return arr;
+}
+
+// Tests
+// ----------------------
+// Test 1
+let arr = [0, 10, 20, 30];
+let fn = function greaterThan10(n) {
+  return n > 10;
 };
 
-// Test 1
-let arr = [1, 2, 3];
-function plusone(n) {
-  return n + 1;
-}
+console.log(filter(arr, fn)); // [20, 30]
 
-let newArray = map(arr, plusone);
-console.log(newArray); // [2, 3, 4]
-
-// Test 2
+//Test 2
 arr = [1, 2, 3];
-function plusI(n, i) {
-  return n + i;
-}
+fn = function firstIndex(n, i) {
+  return i === 0;
+};
 
-newArray = map(arr, plusI);
-console.log(newArray); // [1, 3, 5]
+console.log(filter(arr, fn)); // [1]
 
-// Test 2
-arr = [10, 20, 30];
-function constant() {
-  return 42;
-}
+// Test 3
+arr = [-2, -1, 0, 1, 2];
+fn = function plusOne(n) {
+  return n + 1;
+};
 
-newArray = map(arr, constant);
-console.log(newArray); // [42,42,42]
+console.log(filter(arr, fn)); // [-2,0,1,2]
