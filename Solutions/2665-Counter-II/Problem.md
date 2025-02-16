@@ -1,30 +1,39 @@
-[2620. Counter](https://leetcode.com/problems/counter/description/?envType=study-plan-v2&envId=30-days-of-javascript)
-Solved
+[2665. Counter II](https://leetcode.com/problems/counter-ii?envType=study-plan-v2&envId=30-days-of-javascript)
+
 Easy
 Companies
 Hint
-Given an integer n, return a counter function. This counter function initially returns n and then returns 1 more than the previous value every subsequent time it is called (n, n + 1, n + 2, etc).
+Write a function createCounter. It should accept an initial integer init. It should return an object with three functions.
+
+The three functions are:
+
+increment() increases the current value by 1 and then returns it.
+decrement() reduces the current value by 1 and then returns it.
+reset() sets the current value to init and then returns it.
 
 Example 1:
 
-Input:
-n = 10
-["call","call","call"]
-Output: [10,11,12]
+Input: init = 5, calls = ["increment","reset","decrement"]
+Output: [6,5,4]
 Explanation:
-counter() = 10 // The first time counter() is called, it returns n.
-counter() = 11 // Returns 1 more than the previous time.
-counter() = 12 // Returns 1 more than the previous time.
+const counter = createCounter(5);
+counter.increment(); // 6
+counter.reset(); // 5
+counter.decrement(); // 4
 Example 2:
 
-Input:
-n = -2
-["call","call","call","call","call"]
-Output: [-2,-1,0,1,2]
-Explanation: counter() initially returns -2. Then increases after each sebsequent call.
+Input: init = 0, calls = ["increment","increment","decrement","reset","reset"]
+Output: [1,2,1,0,0]
+Explanation:
+const counter = createCounter(0);
+counter.increment(); // 1
+counter.increment(); // 2
+counter.decrement(); // 1
+counter.reset(); // 0
+counter.reset(); // 0
 
 Constraints:
 
--1000 <= n <= 1000
+-1000 <= init <= 1000
 0 <= calls.length <= 1000
-calls[i] === "call"
+calls[i] is one of "increment", "decrement" and "reset"
