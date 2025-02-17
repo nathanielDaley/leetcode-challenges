@@ -55,14 +55,24 @@ function memoize(fn) {
   const cache = new Map();
 
   return function (...args) {
+    // can't store the array directly as the key
+    // when we get later map will use comparison(compare array to stored key)
+    // which will fail since javascript compares objects by reference
+    // instead we use strigified versions of the arrays as keys
     const key = JSON.stringify(args);
     if (!cache.has(key)) {
       cache.set(key, fn(...args));
     }
+    // will always return something since if the array and result didn't exist
+    // already in the map they were stored in it
     return cache.get(key);
   };
 }
 
+// ---------------------------
+// ## Tests
+// ---------------------------
+// # Test 1
 let callCount = 0;
 let memoizedFn = memoize(function (a, b) {
   callCount += 1;
@@ -72,6 +82,7 @@ console.log(memoizedFn(2, 3)); // 5
 console.log(memoizedFn(2, 3)); // 5
 console.log(callCount); // 1
 
+// # Test 2
 callCount = 0;
 const factorial = (n) => (n <= 1 ? 1 : n * factorial(n - 1));
 memoizedFn = memoize(factorial);
