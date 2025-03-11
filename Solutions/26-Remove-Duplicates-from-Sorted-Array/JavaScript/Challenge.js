@@ -3,23 +3,23 @@
 // ------------------------------
 // Solution 1
 // ------------------------------
-/**
- * @param {number[]} nums
- * @return {number}
- */
-var removeDuplicates = function (nums) {
-  uniqueArray = [];
-  uniqueCount = 0;
+// /**
+//  * @param {number[]} nums
+//  * @return {number}
+//  */
+// var removeDuplicates = function (nums) {
+//   uniqueArray = [];
+//   uniqueCount = 0;
 
-  for (let i = 0; i < nums.length; i++) {
-    if (!uniqueArray.includes(nums[i])) {
-      uniqueArray.push(nums[i]);
-      nums[uniqueCount++] = nums[i];
-    }
-  }
+//   for (let i = 0; i < nums.length; i++) {
+//     if (!uniqueArray.includes(nums[i])) {
+//       uniqueArray.push(nums[i]);
+//       nums[uniqueCount++] = nums[i];
+//     }
+//   }
 
-  return uniqueCount;
-};
+//   return uniqueCount;
+// };
 
 // ------------------------------
 // Solution 2
