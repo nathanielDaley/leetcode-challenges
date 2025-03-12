@@ -46,8 +46,11 @@ let majorityElement = (nums) => {
   return majorElement;
 };
 
+// ------------------------------------------
+// Tests
+// ------------------------------------------
 let nums = [3, 2, 3];
-console.log(majorityElement(nums)); // 2
+console.log(majorityElement(nums)); // 3
 
 nums = [2, 2, 1, 1, 1, 2, 2];
 console.log(majorityElement(nums)); // 2
