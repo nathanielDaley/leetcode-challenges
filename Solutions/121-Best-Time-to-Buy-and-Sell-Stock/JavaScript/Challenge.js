@@ -3,27 +3,51 @@
 // ------------------------------
 // Solution 1
 // ------------------------------
+// /**
+//  * @param {number[]} prices
+//  * @return {number}
+//  */
+// var maxProfit = function (prices) {
+//   let lowestIndex = 0;
+//   let highestProfit = 0;
+
+//   for (let j = 1; j < prices.length; j++) {
+//     if (prices[j] - prices[lowestIndex] > highestProfit) {
+//       highestProfit = prices[j] - prices[lowestIndex];
+//     }
+//   }
+//   for (let i = 1; i < prices.length; i++) {
+//     if (prices[i] < prices[lowestIndex]) {
+//       lowestIndex = i;
+//       for (let j = i + 1; j < prices.length; j++) {
+//         if (prices[j] - prices[i] > highestProfit) {
+//           highestProfit = prices[j] - prices[i];
+//         }
+//       }
+//     }
+//   }
+
+//   return highestProfit;
+// };
+
+// ------------------------------
+// Solution 2
+// ------------------------------
 /**
  * @param {number[]} prices
  * @return {number}
  */
 var maxProfit = function (prices) {
-  let lowestIndex = 0;
+  let lowestPrice = prices[0];
   let highestProfit = 0;
 
-  for (let j = 1; j < prices.length; j++) {
-    if (prices[j] - prices[lowestIndex] > highestProfit) {
-      highestProfit = prices[j] - prices[lowestIndex];
-    }
-  }
   for (let i = 1; i < prices.length; i++) {
-    if (prices[i] < prices[lowestIndex]) {
-      lowestIndex = i;
-      for (let j = i + 1; j < prices.length; j++) {
-        if (prices[j] - prices[i] > highestProfit) {
-          highestProfit = prices[j] - prices[i];
-        }
-      }
+    if (lowestPrice > prices[i]) {
+      lowestPrice = prices[i];
+    }
+
+    if (highestProfit < prices[i] - lowestPrice) {
+      highestProfit = prices[i] - lowestPrice;
     }
   }
 
