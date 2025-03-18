@@ -1,40 +1,46 @@
 // ------------------------------
 // Solutions
 // ------------------------------
+// Solution 1
+// ------------------------------
+// /**
+//  * @param {number[]} nums
+//  * @return {boolean}
+//  */
+// var containsDuplicate = function (nums) {
+//   let numsMap = new Map();
+//   for (let i = 0; i < nums.length; i++) {
+//     if (!numsMap[nums[i]]) {
+//       numsMap[nums[i]] = true;
+//     } else {
+//       return true;
+//     }
+//   }
+
+//   return false;
+// };
+
+// ------------------------------
+// Solution 2
+// ------------------------------
 /**
- * @param {string} s
- * @param {string} t
+ * @param {number[]} nums
  * @return {boolean}
  */
-var isAnagram = function (s, t) {
-  if (s.length !== t.length) {
-    return false;
-  }
+var containsDuplicate = function (nums) {
+  let numsSet = new Set(nums);
 
-  let scharsMap = new Map();
-  let tcharsMap = new Map();
-  for (let i = 0; i < s.length; i++) {
-    scharsMap[s[i]] = scharsMap[s[i]] + 1 || 1;
-    tcharsMap[t[i]] = tcharsMap[t[i]] + 1 || 1;
-  }
-
-  for (const key in scharsMap) {
-    if (scharsMap[key] !== tcharsMap[key]) {
-      return false;
-    }
-  }
-
-  return true;
+  return numsSet.size !== nums.length;
 };
 
-let s = "racecar";
-let t = "carrace";
-console.log(isAnagram(s, t));
+// ------------------------------------------
+// Tests
+// ------------------------------------------
+let nums = [1, 2, 3, 1];
+console.log(containsDuplicate(nums)); // true
 
-s = "jar";
-t = "jam";
-console.log(isAnagram(s, t));
+nums = nums = [1, 2, 3, 4];
+console.log(containsDuplicate(nums)); // false
 
-s = "a";
-t = "ab";
-console.log(isAnagram(s, t));
+nums = [1, 1, 1, 3, 3, 4, 3, 2, 4, 2];
+console.log(containsDuplicate(nums)); // true
