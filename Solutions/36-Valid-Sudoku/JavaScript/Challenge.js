@@ -12,7 +12,7 @@ var isValidSudoku = function (board) {
 
   for (let row = 0; row < 9; row++) {
     for (let column = 0; column < 9; column++) {
-      if (value === ".") continue;
+      if (board[row][column] === ".") continue;
 
       const value = board[row][column];
       const squareKey = `${[Math.floor(row / 3), Math.floor(column / 3)]}`;
