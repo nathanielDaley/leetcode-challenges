@@ -43,6 +43,9 @@ var productExceptSelf = function (nums) {
   return productsArray;
 };
 
+// ------------------------------------------
+// Tests
+// ------------------------------------------
 let nums = [1, 2, 3, 4];
 console.log(productExceptSelf(nums)); // [24,12,8,6]
 
