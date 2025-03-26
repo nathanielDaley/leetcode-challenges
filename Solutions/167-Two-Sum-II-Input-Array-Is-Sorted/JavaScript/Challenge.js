@@ -60,3 +60,7 @@ console.log(twoSum(numbers, target)); // [1,3]
 numbers = [-1, 0];
 target = -1;
 console.log(twoSum(numbers, target)); // [1,2]
+
+numbers = [1, 2, 3, 4, 4, 9, 56, 90];
+target = 8;
+console.log(twoSum(numbers, target)); // [4, 5]
