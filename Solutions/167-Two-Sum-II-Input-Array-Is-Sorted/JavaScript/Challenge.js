@@ -26,6 +26,7 @@
  * @return {number[]}
  */
 var twoSum = function (numbers, target) {
+  // remove this if there isn't guaranteed an answer
   if (numbers.length === 2) return [1, 2];
 
   let leftIndex = 0;
